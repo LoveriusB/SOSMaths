@@ -1,0 +1,35 @@
+/*-------------------FONT-------------------*/
+@font-face {
+    font-family: 'times_new_nelsonregular';
+    src: url('/vendors/fonts/timesnewnelson-regular-webfont.woff2') format('woff2'),
+         url('/vendors/fonts/timesnewnelson-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+
+.backgroundimg{
+    background-image: url('/images/background.jpg');
+    background-position: center;
+    background-size: cover;
+    /*height: 300px; /*550*/
+}
+
+.mainTitle{
+	font-family: times_new_nelsonregular;
+}
+
+.textWhite{
+	color: white;
+}
+
+.navBtn:hover{
+	
+}
+
