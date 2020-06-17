@@ -8,11 +8,20 @@
 
 }
 
+/*-------------------GENERAL-------------------*/
 *{
 	margin: 0;
 	padding: 0;
 }
 
+body{
+    background-color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-height: 100vh;
+    font-family: Gilroy-Light;
+}
 
 .backgroundimg{
     background-image: url('/images/background.jpg');
@@ -29,7 +38,50 @@
 	color: white;
 }
 
-.navBtn:hover{
-	
+.left-menu {
+    background: white;
+    border-right: 1px solid #dadfea;
+    min-height: 100%;
+    padding: 0px;
+    margin: 0px;
+    -webkit-backface-visibility: hidden;
+}
+
+.left-menu span{
+    margin-left: 10px;
+}
+
+.left-menu .widget {
+    border-bottom: 1px solid #dadfea;
+    background: white;
+}
+
+.whoAmI-button{
+    width: 100% !important;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 30px;
+    margin: 0 auto;
+    display: block;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    
+    background-image: -ms-linear-gradient(top left, #142434 0%, #477982 100%); 
+}
+
+.left-menu .widget {
+    border-bottom: 1px solid #dadfea;
+    background: white;
+}
+
+.widget-btn {
+    height: 65px;
+    line-height: 2.5;
+    display: block;
+    padding: 10px 10px 0;
 }
 
