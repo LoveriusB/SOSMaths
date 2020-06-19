@@ -20,7 +20,7 @@ public class RootServlet extends DefaultServlet{
 		try {
 			if (req.getRequestURI().contentEquals("/")) {
 				resp.setContentType("text/html");
-				resp.setCharacterEncoding("utf-8");
+				resp.setCharacterEncoding("UTF-8");
 				resp.setStatus(HttpServletResponse.SC_OK);
 				String body = readAllHtml();
 				resp.getWriter().write(body);
@@ -31,9 +31,9 @@ public class RootServlet extends DefaultServlet{
 			e.printStackTrace();
 			resp.setStatus(500);
 			resp.setContentType("text/html");
-			byte[] msgBytes = e.getMessage().getBytes("utf-8");
+			byte[] msgBytes = e.getMessage().getBytes("UTF-8");
 			resp.setContentLength(msgBytes.length);
-			resp.setCharacterEncoding("utf-8");
+			resp.setCharacterEncoding("UTF-8");
 			resp.getOutputStream().write(msgBytes);
 		}
 	}

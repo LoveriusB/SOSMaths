@@ -5,7 +5,7 @@
 
 	<div class="container-fluid">
         <div class="row">
-			<div class="col-md-2" style="padding: 0; margin: 0;">
+			<div class="col-md-2 col-sm-3" style="padding: 0; margin: 0;">
 				<div class="left-menu">
 					<ul class="list-unstyled">
 						<li class="widget widget-btn">
@@ -13,9 +13,85 @@
                         		Qui suis-je?
                         	</button>
 	                    </li>
+
+
+	                    <div class="widget widget-menus">
+	                    	<li>
+			                    <button href="#">
+			                        <i class="fa fa-home"></i><span>Home</span>
+			                    </button>
+			                </li>
+
+			                <li>
+			                	
+			                	<button data-toggle="collapse" href="#categories" role="button" aria-expanded="undefined" aria-controls="categories">
+			                        <i class="fa fa-th-list"></i><span>Categories</span>
+			                    </button>
+
+			                    <div class="collapse show" aria-expanded="true" id="categories">
+			                    	<form action="index.php?action=home#forumquestions" method="post">
+			                            <div class="categories">
+			                                <ul class="ks-cboxtags">
+			                                	<li><input type="checkbox" id="checkboxMaths" value="Maths">
+			                                        <label for="checkboxMaths">Maths</label>
+			                                    </li>
+
+			                                    <li><input type="checkbox" id="checkboxPhysique" value="Physique">
+			                                        <label for="checkboxPhysique">Physique <br/> Non disponible.</label>
+			                                    </li>
+
+			                                    <li><input type="checkbox" id="checkboxChimie" value="Chimie">
+			                                        <label for="checkboxChimie">Chimie<br/> Non disponible.</label>
+			                                    </li>
+
+			                                </ul>
+		                                </div>
+	                                </form>
+                                </div>
+			                </li>
+
+			                <li>
+			                	<button data-toggle="collapse" href="#TriPar" role="button" aria-expanded="undefined" aria-controls="TriPar">
+			                        <i class="fa fa-th-list"></i><span>Tri Par</span>
+			                    </button>
+
+			                    <div class="collapse show" aria-expanded="true" id="TriPar">
+			                    	<form action="index.php?action=home#forumquestions" method="post">
+			                            <div class="categories">
+			                                <ul class="ks-cboxtags">
+			                                	<li><input type="checkbox" id="checkboxFour" value="Theorie">
+			                                        <label for="checkboxFour">Première <br/> année</label>
+			                                    </li>
+
+			                                    <li><input type="checkbox" id="checkboxFive" value="Exercices">
+			                                        <label for="checkboxFive">Deuxième <br/> année</label>
+			                                    </li>
+
+			                                    <li><input type="checkbox" id="checkboxSix" value="General">
+			                                        <label for="checkboxSix">Troisième <br/> année</label>
+			                                    </li>
+
+			                                    <li><input type="checkbox" id="checkboxSix" value="General">
+			                                        <label for="checkboxSix">Quatrième <br/> année</label>
+			                                    </li>
+
+			                                    <li><input type="checkbox" id="checkboxSix" value="General">
+			                                        <label for="checkboxSix">Cinquième <br/> année</label>
+			                                    </li>
+
+			                                    <li><input type="checkbox" id="checkboxSix" value="General">
+			                                        <label for="checkboxSix">Sixième <br/> année</label>
+			                                    </li>
+
+			                                </ul>
+		                                </div>
+	                                </form>
+                                </div>
+			                </li>
+	                    </div>
 					</ul>
-					<p>Left menu</p>
+					<div class="clearfix"></div>
 				</div>
 			</div>
-	<!-- </div> -->
-<!-- </div> -->
+	<!--</div> -->
+<!--</div> -->
