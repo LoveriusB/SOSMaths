@@ -39,7 +39,7 @@ public class RootServlet extends DefaultServlet{
 	}
 
 	private String readAllHtml() throws IOException {
-		String baseDirectory = "./public/views"; 
+		/*String baseDirectory = "./public/views"; 
 		StringBuilder body = new StringBuilder();
 		try (Stream<Path> walk = Files.walk(Paths.get(baseDirectory))) {
 			List<String> files = walk.filter(Files::isRegularFile)
@@ -53,7 +53,21 @@ public class RootServlet extends DefaultServlet{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return body.toString();
+		return body.toString();*/
+		
+		String basePathDirectories = "./public/views/";
+
+	    StringBuilder body = new StringBuilder();
+
+
+	    body.append(new String(Files.readAllBytes(Paths.get(basePathDirectories + "1index.html"))));
+	    body.append(new String(Files.readAllBytes(Paths.get(basePathDirectories + "2LeftManu.html"))));
+	    body.append(new String(Files.readAllBytes(Paths.get(basePathDirectories + "2mainPage.html"))));
+	    body.append(new String(Files.readAllBytes(Paths.get(basePathDirectories + "99footer.html"))));
+
+	    return body.toString();
+		
+		
 	}
 
 }
