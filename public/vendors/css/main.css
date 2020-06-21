@@ -255,16 +255,13 @@ ul.ks-cboxtags {
 
 ul.ks-cboxtags li{
     display: inline;
-
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.5s ease-in-out;
 }
 
-ul.ks-cboxtags li:hover {
-    transform: scale(1.1);
+/*ul.ks-cboxtags li:hover {
+
+    background: #f5f9fa;
+
+    transform: scale(1.5);
 
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -272,7 +269,7 @@ ul.ks-cboxtags li:hover {
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.5s ease-in-out;
     
-}
+}*/
 
 ul.ks-cboxtags li label{
     text-align: center;
@@ -293,8 +290,23 @@ ul.ks-cboxtags li label{
 }
 
 ul.ks-cboxtags li label {
+
     padding: 8px 12px;
     cursor: pointer;
+}
+
+ul.ks-cboxtags li label:hover {
+    background-color: #f5f9fa;
+
+    transform: scale(1.05);
+
+    /*transform: translate3d(10px,0,0);*/
+
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 ul.ks-cboxtags li label::before {
@@ -414,7 +426,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 
 .question-item:hover{
     background: #f5f9fa;
-    transform: translate3d(5px,0,0);
+    transform: translate3d(10px,0,0);
     /*transform: scale(1.02);*/
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
