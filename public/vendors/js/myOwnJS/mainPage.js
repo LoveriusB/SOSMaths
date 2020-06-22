@@ -10,7 +10,7 @@ function buildSearchString(){
 	//Final looks are cool!!!
 	var aReturn = "";
 	if (filtersServices.length == 0){
-		aReturn = "Recherche effectuée sur tous les éléments";
+		aReturn = "Affichage de tous les éléments.";
 	} else if (filtersServices.length == 1){
 		aReturn = "Recherche effectuée sur le cours de ";
 	} else {
@@ -85,97 +85,111 @@ function notify(type,msg){
 	})
 }
 
+function showMainPage(){
+	let data = {
+			action : "firstLoad",
+			filterYear : filtersYears,
+			filtersService : filtersServices,
+			keyWord : $("#keyWord").val()
+		};
+		postData("/menu", data, onSuccess, onError);
+		notify("info",buildSearchString());
+}
 
 //Events on main page.
 $(document).ready(function() {
 	console.log("Ready");
+
+	showMainPage();
+
+
 	$('#checkboxMaths').click(function () {
 		if ($('#checkboxMaths').is(":checked")){
 			filtersServices.push("Maths");
-	    	notify("success","Maths à été ajouté à la liste de filtres");
+	    	//notify("success","Maths à été ajouté à la liste de filtres");
 		} else {
 			filtersServices.splice(filtersServices.indexOf("Maths"), 1);
-			notify("warning","Maths à été retiré de la liste de filtres");
+			//notify("warning","Maths à été retiré de la liste de filtres");
 		}
 	})
 
 	$('#checkboxPhysique').click(function () {
 		if ($('#checkboxPhysique').is(":checked")){
 			filtersServices.push("Physique");
-	    	notify("success","Physique à été ajouté à la liste de filtres");
+	    	//notify("success","Physique à été ajouté à la liste de filtres");
 		} else {
 			filtersServices.splice(filtersServices.indexOf("Physique"), 1);
-			notify("warning","Physique à été retiré de la liste de filtres");
+			//notify("warning","Physique à été retiré de la liste de filtres");
 		}
 	})
 
 	$('#checkboxChimie').click(function () {
 		if ($('#checkboxChimie').is(":checked")){
 			filtersServices.push("Chimie");
-	    	notify("success","Chimie à été ajouté à la liste de filtres");
+	    	//notify("success","Chimie à été ajouté à la liste de filtres");
 		} else {
 			filtersServices.splice(filtersServices.indexOf("Chimie"), 1);
-			notify("warning","Chimie à été retiré de la liste de filtres");
+			//notify("warning","Chimie à été retiré de la liste de filtres");
 		}
 	})
 
 	$('#checkboxPremière').click(function () {
 	    if ($('#checkboxPremière').is(":checked")){
 	    	filtersYears.push("Premiere");
-	    	notify("success","Première à été ajouté à la liste de filtres");
+	    	//notify("success","Première à été ajouté à la liste de filtres");
 	    } else {
 	    	filtersYears.splice(filtersYears.indexOf("Premiere"), 1);
-	    	notify("warning","Première à été retiré de la liste de filtres");
+	    	//notify("warning","Première à été retiré de la liste de filtres");
 	    }
 	})
 
 	$('#checkboxDeuxième').click(function () {
 	    if ($('#checkboxDeuxième').is(":checked")){
 	    	filtersYears.push("Deuxieme");
-	    	notify("success","Deuxième à été ajouté à la liste de filtres");
+	    	//notify("success","Deuxième à été ajouté à la liste de filtres");
 	    } else {
 	    	filtersYears.splice(filtersYears.indexOf("Deuxieme"), 1);
-	    	notify("warning","Deuxième à été retiré de la liste de filtres");
+	    	//notify("warning","Deuxième à été retiré de la liste de filtres");
 	    }
 	})
 
 	$('#checkboxTroisième').click(function () {
 	    if ($('#checkboxTroisième').is(":checked")){
 	    	filtersYears.push("Troisieme");
-	    	notify("success","Troisième à été ajouté à la liste de filtres");
+	    	//notify("success","Troisième à été ajouté à la liste de filtres");
 	    } else {
 	    	filtersYears.splice(filtersYears.indexOf("Troisieme"), 1);
-	    	notify("warning","Troisième à été retiré de la liste de filtres");
+	    	//notify("warning","Troisième à été retiré de la liste de filtres");
 	    }
 	})
 
 	$('#checkboxQuatrième').click(function(){
 		if ($('#checkboxQuatrième').is(":checked")){
 	    	filtersYears.push("Quatrieme");
-	    	notify("success","Quatrième à été ajouté à la liste de filtres");
+	    	//notify("success","Quatrième à été ajouté à la liste de filtres");
 	    } else {
 	    	filtersYears.splice(filtersYears.indexOf("Quatrieme"), 1);
-	    	notify("warning","Quatrième à été retiré de la liste de filtres");
+	    	//notify("warning","Quatrième à été retiré de la liste de filtres");
 	    }
 	})
 
 	$('#checkboxCinquième').click(function () {
 	    if ($('#checkboxCinquième').is(":checked")){
 	    	filtersYears.push("Cinquieme");
-	    	notify("success","Cinquième à été ajouté à la liste de filtres");
+	    	//notify("success","Cinquième à été ajouté à la liste de filtres");
 	    } else {
 	    	filtersYears.splice(filtersYears.indexOf("Cinquieme"), 1);
-	    	notify("warning","Cinquième à été retiré de la liste de filtres");
+	    	//notify("warning","Cinquième à été retiré de la liste de filtres");
 	    }
 	})
 
 	$('#checkboxSixième').click(function () {
 	    if ($('#checkboxSixième').is(":checked")){
 	    	filtersYears.push("Sixieme");
-	    	notify("success","Sixième à été ajouté à la liste de filtres");
+	    	//notify("success","Sixième à été ajouté à la liste de filtres");
 	    } else {
 	    	filtersYears.splice(filtersYears.indexOf("Sixieme"), 1);
-	    	notify("warning","Sixième à été ajouté à la liste de filtres");
+	    	//notify("warning","Sixième à été ajouté à la liste de filtres");
 	    }
 	})
 
@@ -193,13 +207,13 @@ $(document).ready(function() {
 });
 
 function onSuccess(response){
-	//console.log(response.data);
+	console.log(response);
 	createDynamicHtmlList("topics", response.data);
 	notify("info",buildSearchString());
 }
 
 function onError(response){
-	console.log(response.data);
+	console.log(response);
 	notify("info","Une erreur est survenue.");
 
 }
@@ -233,7 +247,7 @@ function createDynamicHtmlList(targetHtmlElementID, arrayToPrint){
 
 		let myTd = document.createElement("td");
 		myTd.className = "col-3 question-state question-title";
-		myTd.innerHTML = "<i class=\"fas fa-comment-alt\"></i><br/><button type=\"button\" class=\"btn btn-outline-primary\">" + arrayToPrint[i].state; + "</button>"
+		myTd.innerHTML = "<i class=\"fas fa-comment-alt\"></i><br/><button type=\"button\" class=\"btn btn-outline-primary\"> Cours de <br/>" + arrayToPrint[i].annee; + "</button>"
 		myTr.appendChild(myTd);
 
 		let myTd2 = document.createElement("td");
@@ -247,7 +261,7 @@ function createDynamicHtmlList(targetHtmlElementID, arrayToPrint){
 
 		let mySpan = document.createElement("span");
 		mySpan.className = "question-category badge badge-info";
-		mySpan.innerHTML = "<i class=\"fas fa-plus\"></i>" + arrayToPrint[i].cours;
+		mySpan.innerHTML = "<i class=\"fas fa-plus\"></i>" + arrayToPrint[i].matiere;
 		myTd2.appendChild(mySpan);
 
 		//DIV INSIDE SECOND TD (Author)
