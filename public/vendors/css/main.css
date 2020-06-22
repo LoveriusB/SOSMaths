@@ -64,7 +64,7 @@ body{
 .left-menu {
     background: white;
     border-right: 1px solid #dadfea;
-    border-top: 1px solid #dadfea;
+    /*border-top: 1px solid #dadfea;*/
     min-height: 100%;
     padding: 0px;
     margin: 0px;
@@ -133,7 +133,7 @@ body{
 }
 
 .search-bar{
-    border-top: 1px solid #dadfea;
+    /*border-top: 1px solid #dadfea;*/
     box-shadow: 0px 15px 10px -15px rgba(0,0,0,0.5);
 }
 
@@ -171,7 +171,7 @@ body{
     background: #355c7d;
     border: none;
     position: absolute;
-    top: 30px;
+    top: 20px;
 
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -503,12 +503,6 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 .question-list{
     padding: 0;
     margin: 10px 10px 10px 10px;
-}
-
-.question-list .isDisabled:hover {
-    color: currentColor;
-    opacity: 0.5;
-    text-decoration: none;
 }
 
 .question-statistics{

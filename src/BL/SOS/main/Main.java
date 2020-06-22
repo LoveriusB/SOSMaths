@@ -1,9 +1,12 @@
 package BL.SOS.main;
 
+import javax.servlet.http.HttpServlet;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
 
+import BL.SOS.ihm.MenuServlet;
 import BL.SOS.ihm.RootServlet;
 
 public class Main {
@@ -18,6 +21,11 @@ public class Main {
 		
 		Config.load("prod.properties");
 		InjectionService injectionService = new InjectionService();
+		
+		
+		HttpServlet menuServlet = new MenuServlet();
+	    injectionService.injectDependencies(menuServlet);
+	    context.addServlet(new ServletHolder(menuServlet), "/menu");
 		
 		//Add servlets here.
 		

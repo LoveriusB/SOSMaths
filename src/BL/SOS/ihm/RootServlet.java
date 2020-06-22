@@ -61,7 +61,7 @@ public class RootServlet extends DefaultServlet{
 
 
 	    body.append(new String(Files.readAllBytes(Paths.get(basePathDirectories + "1index.html"))));
-	    body.append(new String(Files.readAllBytes(Paths.get(basePathDirectories + "2LeftManu.html"))));
+	    body.append(new String(Files.readAllBytes(Paths.get(basePathDirectories + "2LeftMenu.html"))));
 	    body.append(new String(Files.readAllBytes(Paths.get(basePathDirectories + "2mainPage.html"))));
 	    body.append(new String(Files.readAllBytes(Paths.get(basePathDirectories + "99footer.html"))));
 
