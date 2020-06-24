@@ -10,7 +10,6 @@ public class Topic{
 	private String nbviews;
 	private String nbComments;
 	private String matiere;
-	/*public String state;*/
 	public String annee;
 
 	public Topic() {
@@ -20,7 +19,7 @@ public class Topic{
 	public Topic(String id, String videoLink, String title, 
 			String poster, String postDate, String lastAnswer, 
 			String nbviews, String nbComments, String matiere, 
-			/*String state,*/ String annee) {
+			String annee) {
 		this.id = id;
 		this.videoLink = videoLink;
 		this.title = title;
@@ -30,13 +29,12 @@ public class Topic{
 		this.nbviews = nbviews;
 		this.nbComments = nbComments;
 		this.matiere = matiere;
-		//this.state = state;
 		this.annee = annee;
 	}
 
 	public Topic(String id, String videoLink, 
 			String title, String poster, String postDate, 
-			String lastAnswer, String matiere, /*String state,*/ String annee) {
+			String lastAnswer, String matiere, String annee) {
 		this.id = id;
 		this.videoLink = videoLink;
 		this.title = title;
@@ -46,7 +44,6 @@ public class Topic{
 		this.nbviews = "0";
 		this.nbComments = "0";
 		this.matiere = matiere;
-		//this.state = state;
 		this.annee = annee;
 	}
 
@@ -60,7 +57,6 @@ public class Topic{
 				+ " " + this.nbComments 
 				+ " " + this.nbviews 
 				+ " " + this.matiere 
-				/*+ " " + this.state*/
 				+ " " + this.annee;
 	}
 

@@ -38,7 +38,12 @@ public class MenuServlet extends HttpServlet{
 			return compare;
 		}
 	};
-	
+	/**
+	 * Usefull for the comparator right above. All the elements of the "annees" are entered in order.
+	 * @param str, le tableau "Annees" contenant les niveaux des années.
+	 * @param annee L'année entrée en paramètre dont on veut l'index.
+	 * @return l'index de l'année entrée en param
+	 */
 	private int indexOf(String[] str, String annee) {
 		
 		for (int i = 0; i < str.length; i++) {
@@ -46,11 +51,14 @@ public class MenuServlet extends HttpServlet{
 				return i;
 			}
 		}
-		
 		return -1;
 	}
 	
-
+	/**
+	 * Decode the body of our req variable sended by JS
+	 * @param req the request gottent by JS
+	 * @return the body decoded as a map.
+	 */
 	public Map<String, Object> decoderBodyJson(HttpServletRequest req) {
 		StringBuffer jb = new StringBuffer();
 		String line = null;
@@ -71,13 +79,16 @@ public class MenuServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		Map<String, Object> body = decoderBodyJson(req);
 		String toSend = "{\"success\":true}";
+		
+		
 		switch((String)body.get("action")){
-		
-		
+		//Filter the items.
 		case "filter":
 			filterTopics(resp, body);
 			break;
+		
 			
+		//Loading all the items on first load.
 		case "firstLoad":
 			String json = new String(Files.readAllBytes(Paths.get("./public/db/topics.json")));
 			List<Topic> topics = gensonUser.deserialize(json, new GenericType<List<Topic>>() {});
@@ -94,14 +105,15 @@ public class MenuServlet extends HttpServlet{
 		default:
 			//Should never happen ;)
 			System.out.println("Fuck.");
+			System.exit(500);
 			break;
 		}
 	}
 	
 	/**
-	 * Filter of the elements depends on the filters selected on the page.
+	 * Filtering of the topics depends on the filters selected on the page.
 	 * If they are empty or if only one of them is empty or if none of them is empty
-	 * the behavior of the filter will change.
+	 * the behavior of the filterTopics function will change.
 	 * 
 	 * The point of this function is to send back all the topics corresponding to what
 	 * the user wants.
@@ -119,22 +131,26 @@ public class MenuServlet extends HttpServlet{
 			if (((ArrayList)body.get("filtersService")).isEmpty() && ((ArrayList)body.get("filterYear")).isEmpty()) {
 				filtered = topics.stream()
 						.sorted(comp)
+						.filter(t -> t.getTitle().contains(body.get("keyWord").toString()))
 						.collect(Collectors.toList());
 			} else if (!((ArrayList<Topic>)body.get("filtersService")).isEmpty() && ((ArrayList<Topic>)body.get("filterYear")).isEmpty()) {
 				filtered = topics.stream()
 						.filter(t -> ((ArrayList)body.get("filtersService")).contains(t.getMatiere()))
 						.sorted(comp)
+						.filter(t -> t.getTitle().contains(body.get("keyWord").toString()))
 						.collect(Collectors.toList());	
 			} else if (((ArrayList<Topic>)body.get("filtersService")).isEmpty() && !((ArrayList<Topic>)body.get("filterYear")).isEmpty()) {
 				filtered = topics.stream()
 						.filter(t -> ((ArrayList)body.get("filterYear")).contains(t.getAnnee()))
 						.sorted(comp)
+						.filter(t -> t.getTitle().contains(body.get("keyWord").toString()))
 						.collect(Collectors.toList());
 			} else {
 				filtered = topics.stream()
 						.filter(t -> ((ArrayList)body.get("filtersService")).contains(t.getMatiere())
 								&& ((ArrayList)body.get("filterYear")).contains(t.getAnnee()))
 						.sorted(comp)
+						.filter(t -> t.getTitle().contains(body.get("keyWord").toString()))
 						.collect(Collectors.toList());
 			}
 			toSend = "{\"success\":\"true\", \"data\":"
@@ -145,7 +161,6 @@ public class MenuServlet extends HttpServlet{
 			e.printStackTrace();
 			toSend = "{\"success\":false, \"error\":\"Error during reading the topics.json db\"}";
 			ServletUtils.sendResponse(resp, toSend, HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-			
 		}	
 	}
 }

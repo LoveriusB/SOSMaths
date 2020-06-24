@@ -111,6 +111,7 @@ $(document).ready(function() {
 			filtersServices.splice(filtersServices.indexOf("Maths"), 1);
 			//notify("warning","Maths à été retiré de la liste de filtres");
 		}
+		filter(filtersYears, filtersServices, $("#keyWord").val());
 	})
 
 	$('#checkboxPhysique').click(function () {
@@ -121,6 +122,7 @@ $(document).ready(function() {
 			filtersServices.splice(filtersServices.indexOf("Physique"), 1);
 			//notify("warning","Physique à été retiré de la liste de filtres");
 		}
+		filter(filtersYears, filtersServices, $("#keyWord").val());
 	})
 
 	$('#checkboxChimie').click(function () {
@@ -131,6 +133,7 @@ $(document).ready(function() {
 			filtersServices.splice(filtersServices.indexOf("Chimie"), 1);
 			//notify("warning","Chimie à été retiré de la liste de filtres");
 		}
+		filter(filtersYears, filtersServices, $("#keyWord").val());
 	})
 
 	$('#checkboxPremière').click(function () {
@@ -141,6 +144,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Premiere"), 1);
 	    	//notify("warning","Première à été retiré de la liste de filtres");
 	    }
+	    filter(filtersYears, filtersServices, $("#keyWord").val());
 	})
 
 	$('#checkboxDeuxième').click(function () {
@@ -151,6 +155,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Deuxieme"), 1);
 	    	//notify("warning","Deuxième à été retiré de la liste de filtres");
 	    }
+	    filter(filtersYears, filtersServices, $("#keyWord").val());
 	})
 
 	$('#checkboxTroisième').click(function () {
@@ -161,6 +166,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Troisieme"), 1);
 	    	//notify("warning","Troisième à été retiré de la liste de filtres");
 	    }
+	    filter(filtersYears, filtersServices, $("#keyWord").val());
 	})
 
 	$('#checkboxQuatrième').click(function(){
@@ -171,6 +177,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Quatrieme"), 1);
 	    	//notify("warning","Quatrième à été retiré de la liste de filtres");
 	    }
+	    filter(filtersYears, filtersServices, $("#keyWord").val());
 	})
 
 	$('#checkboxCinquième').click(function () {
@@ -181,6 +188,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Cinquieme"), 1);
 	    	//notify("warning","Cinquième à été retiré de la liste de filtres");
 	    }
+	    filter(filtersYears, filtersServices, $("#keyWord").val());
 	})
 
 	$('#checkboxSixième').click(function () {
@@ -191,20 +199,25 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Sixieme"), 1);
 	    	//notify("warning","Sixième à été ajouté à la liste de filtres");
 	    }
+	    filter(filtersYears, filtersServices, $("#keyWord").val());
 	})
 
 	$('#SearchButton').click(function(){
-
-		let data = {
-			action : "filter",
-			filterYear : filtersYears,
-			filtersService : filtersServices,
-			keyWord : $("#keyWord").val()
-		};
-		postData("/menu", data, onSuccess, onError);
-		notify("info",buildSearchString());
+		filter(filtersYears, filtersServices, $("#keyWord").val());
+		console.log($("#keyWord").val());
 	})
 });
+
+function filter(yearFilter, serviceFilter, tippedKeyWord){
+	let data = {
+		action : "filter",
+		filterYear : yearFilter,
+		filtersService : serviceFilter,
+		keyWord : tippedKeyWord
+	};
+	postData("/menu", data, onSuccess, onError);
+	notify("info",buildSearchString());
+}
 
 function onSuccess(response){
 	console.log(response);
