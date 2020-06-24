@@ -3,6 +3,7 @@ import { postData, getData } from "./UtilsAPI.js";
 var filtersServices = [];
 var filtersYears = [];
 var topics = [];
+var filteredTopics = [];
 
 //Just to be sure the info string after the click on the search button
 //Is nice and clean just like it should be.
@@ -64,7 +65,6 @@ function buildSearchString(){
 	return aReturn;
 }
 
-
 //SweetAlert2 function.
 //Only alert who actually interests me.
 function notify(type,msg){
@@ -86,150 +86,49 @@ function notify(type,msg){
 	})
 }
 
-function showMainPage(){
+function loadAndShowMainPage(){
 	let data = {
-		action : "firstLoad",
-		filterYear : filtersYears,
-		filtersService : filtersServices,
-		keyWord : $("#keyWord").val()
-	};
-	postData("/menu", data, onSuccess, onError);
-	notify("info",buildSearchString());
-}
-
-//Events on main page.
-$(document).ready(function() {
-	console.log("Ready");
-
-	showMainPage();
-
-
-	$('#checkboxMaths').click(function () {
-		if ($('#checkboxMaths').is(":checked")){
-			filtersServices.push("Maths");
-	    	//notify("success","Maths à été ajouté à la liste de filtres");
-		} else {
-			filtersServices.splice(filtersServices.indexOf("Maths"), 1);
-			//notify("warning","Maths à été retiré de la liste de filtres");
-		}
-		filter(filtersYears, filtersServices, $("#keyWord").val());
-	})
-
-	$('#checkboxPhysique').click(function () {
-		if ($('#checkboxPhysique').is(":checked")){
-			filtersServices.push("Physique");
-	    	//notify("success","Physique à été ajouté à la liste de filtres");
-		} else {
-			filtersServices.splice(filtersServices.indexOf("Physique"), 1);
-			//notify("warning","Physique à été retiré de la liste de filtres");
-		}
-		filter(filtersYears, filtersServices, $("#keyWord").val());
-	})
-
-	$('#checkboxChimie').click(function () {
-		if ($('#checkboxChimie').is(":checked")){
-			filtersServices.push("Chimie");
-	    	//notify("success","Chimie à été ajouté à la liste de filtres");
-		} else {
-			filtersServices.splice(filtersServices.indexOf("Chimie"), 1);
-			//notify("warning","Chimie à été retiré de la liste de filtres");
-		}
-		filter(filtersYears, filtersServices, $("#keyWord").val());
-	})
-
-	$('#checkboxPremière').click(function () {
-	    if ($('#checkboxPremière').is(":checked")){
-	    	filtersYears.push("Premiere");
-	    	//notify("success","Première à été ajouté à la liste de filtres");
-	    } else {
-	    	filtersYears.splice(filtersYears.indexOf("Premiere"), 1);
-	    	//notify("warning","Première à été retiré de la liste de filtres");
-	    }
-	    filter(filtersYears, filtersServices, $("#keyWord").val());
-	})
-
-	$('#checkboxDeuxième').click(function () {
-	    if ($('#checkboxDeuxième').is(":checked")){
-	    	filtersYears.push("Deuxieme");
-	    	//notify("success","Deuxième à été ajouté à la liste de filtres");
-	    } else {
-	    	filtersYears.splice(filtersYears.indexOf("Deuxieme"), 1);
-	    	//notify("warning","Deuxième à été retiré de la liste de filtres");
-	    }
-	    filter(filtersYears, filtersServices, $("#keyWord").val());
-	})
-
-	$('#checkboxTroisième').click(function () {
-	    if ($('#checkboxTroisième').is(":checked")){
-	    	filtersYears.push("Troisieme");
-	    	//notify("success","Troisième à été ajouté à la liste de filtres");
-	    } else {
-	    	filtersYears.splice(filtersYears.indexOf("Troisieme"), 1);
-	    	//notify("warning","Troisième à été retiré de la liste de filtres");
-	    }
-	    filter(filtersYears, filtersServices, $("#keyWord").val());
-	})
-
-	$('#checkboxQuatrième').click(function(){
-		if ($('#checkboxQuatrième').is(":checked")){
-	    	filtersYears.push("Quatrieme");
-	    	//notify("success","Quatrième à été ajouté à la liste de filtres");
-	    } else {
-	    	filtersYears.splice(filtersYears.indexOf("Quatrieme"), 1);
-	    	//notify("warning","Quatrième à été retiré de la liste de filtres");
-	    }
-	    filter(filtersYears, filtersServices, $("#keyWord").val());
-	})
-
-	$('#checkboxCinquième').click(function () {
-	    if ($('#checkboxCinquième').is(":checked")){
-	    	filtersYears.push("Cinquieme");
-	    	//notify("success","Cinquième à été ajouté à la liste de filtres");
-	    } else {
-	    	filtersYears.splice(filtersYears.indexOf("Cinquieme"), 1);
-	    	//notify("warning","Cinquième à été retiré de la liste de filtres");
-	    }
-	    filter(filtersYears, filtersServices, $("#keyWord").val());
-	})
-
-	$('#checkboxSixième').click(function () {
-	    if ($('#checkboxSixième').is(":checked")){
-	    	filtersYears.push("Sixieme");
-	    	//notify("success","Sixième à été ajouté à la liste de filtres");
-	    } else {
-	    	filtersYears.splice(filtersYears.indexOf("Sixieme"), 1);
-	    	//notify("warning","Sixième à été ajouté à la liste de filtres");
-	    }
-	    filter(filtersYears, filtersServices, $("#keyWord").val());
-	})
-
-
-	$('#SearchButton').click(function(){
-		//filter(filtersYears, filtersServices, $("#keyWord").val());
-	})
-});
-
-function filter(yearFilter, serviceFilter, tippedKeyWord){
-	let data = {
-		action : "filter",
-		filterYear : yearFilter,
-		filtersService : serviceFilter,
-		keyWord : tippedKeyWord
+		action : "firstLoad"
 	};
 	postData("/menu", data, onSuccess, onError);
 	notify("info",buildSearchString());
 }
 
 function onSuccess(response){
-	console.log(response);
-	createDynamicHtmlList("topics", response.data);
+	//console.log(response);
 	notify("info",buildSearchString());
+	topics = response.data;
+
+	createDynamicHtmlList("topics", topics);
 }
 
 function onError(response){
 	console.log(response);
 	notify("info","Une erreur est survenue.");
 
+}
+
+//Gonna filter every element each time something is tiped in the input bar.
+function filterTopics(topic) {
+	if (filtersServices.length == 0 && filtersYears.length == 0){
+		//No filters selected. Only filter on the input.
+		return topic.title.indexOf($("#keyWord").val()) != -1;
+	} else if (filtersServices.length == 0 && filtersYears.length != 0){
+		//No services selected. Filter on year AND input!
+		return topic.title.indexOf($("#keyWord").val()) != -1 && filtersYears.indexOf(topic.annee) != -1;
+	} else if (filtersServices.length != 0 && filtersYears.length == 0){
+		//No year selected. Filter on services AND input!
+		return topic.title.indexOf($("#keyWord").val()) != -1 && filtersServices.indexOf(topic.matiere) != -1;
+	} else {
+		//All kind of filters are used.
+		return topic.title.indexOf($("#keyWord").val()) != -1 && filtersServices.indexOf(topic.matiere) != -1 && filtersYears.indexOf(topic.annee) != -1;
+	}
+	return false;
+}
+
+function getFilteredTopics() {
+  filteredTopics = topics.filter(filterTopics);
+  createDynamicHtmlList("topics", filteredTopics);
 }
 
 function createDynamicHtmlList(targetHtmlElementID, arrayToPrint){
@@ -307,9 +206,103 @@ function createDynamicHtmlList(targetHtmlElementID, arrayToPrint){
 		myTd3.appendChild(myDiv4);
 
 		divCont.appendChild(myUl);
-
-
 	}
-
-
 }
+
+$(document).ready(function() {
+	loadAndShowMainPage();
+
+	$('#checkboxMaths').click(function () {
+		if ($('#checkboxMaths').is(":checked")){
+			filtersServices.push("Maths");
+		} else {
+			filtersServices.splice(filtersServices.indexOf("Maths"), 1);
+		}
+		getFilteredTopics();
+		notify("info",buildSearchString());
+	})
+
+	$('#checkboxPhysique').click(function () {
+		if ($('#checkboxPhysique').is(":checked")){
+			filtersServices.push("Physique");
+		} else {
+			filtersServices.splice(filtersServices.indexOf("Physique"), 1);
+		}
+		getFilteredTopics();
+		notify("info",buildSearchString());
+	})
+
+	$('#checkboxChimie').click(function () {
+		if ($('#checkboxChimie').is(":checked")){
+			filtersServices.push("Chimie");
+		} else {
+			filtersServices.splice(filtersServices.indexOf("Chimie"), 1);
+		}
+		getFilteredTopics();
+		notify("info",buildSearchString());
+	})
+
+	$('#checkboxPremière').click(function () {
+	    if ($('#checkboxPremière').is(":checked")){
+	    	filtersYears.push("Premiere");
+	    } else {
+	    	filtersYears.splice(filtersYears.indexOf("Premiere"), 1);
+	    }
+	    getFilteredTopics();
+	    notify("info",buildSearchString());
+	})
+
+	$('#checkboxDeuxième').click(function () {
+	    if ($('#checkboxDeuxième').is(":checked")){
+	    	filtersYears.push("Deuxieme");
+	    } else {
+	    	filtersYears.splice(filtersYears.indexOf("Deuxieme"), 1);
+	    }
+	    getFilteredTopics();
+	    notify("info",buildSearchString());
+	})
+
+	$('#checkboxTroisième').click(function () {
+	    if ($('#checkboxTroisième').is(":checked")){
+	    	filtersYears.push("Troisieme");
+	    } else {
+	    	filtersYears.splice(filtersYears.indexOf("Troisieme"), 1);
+	    }
+	    getFilteredTopics();
+	    notify("info",buildSearchString());
+	})
+
+	$('#checkboxQuatrième').click(function(){
+		if ($('#checkboxQuatrième').is(":checked")){
+	    	filtersYears.push("Quatrieme");
+	    } else {
+	    	filtersYears.splice(filtersYears.indexOf("Quatrieme"), 1);
+	    }
+	    getFilteredTopics();
+	    notify("info",buildSearchString());
+	})
+
+	$('#checkboxCinquième').click(function () {
+	    if ($('#checkboxCinquième').is(":checked")){
+	    	filtersYears.push("Cinquieme");
+	    } else {
+	    	filtersYears.splice(filtersYears.indexOf("Cinquieme"), 1);
+	    }
+	    getFilteredTopics();
+	    notify("info",buildSearchString());
+	})
+
+	$('#checkboxSixième').click(function () {
+	    if ($('#checkboxSixième').is(":checked")){
+	    	filtersYears.push("Sixieme");
+	    } else {
+	    	filtersYears.splice(filtersYears.indexOf("Sixieme"), 1);
+	    }
+	    getFilteredTopics();
+	    notify("info",buildSearchString());
+	})
+
+	$("#keyWord").on("input", function() {
+	    getFilteredTopics();
+	});
+});

@@ -1,6 +1,7 @@
 function postData(url = "", data = {}, onPost, onError) {
 
   $.ajax({
+    async: false,
     contentType: "json",
     type: "post",
     url: url,
