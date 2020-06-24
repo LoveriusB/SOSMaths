@@ -7,7 +7,7 @@ var filteredTopics = [];
 
 //Just to be sure the info string after the click on the search button
 //Is nice and clean just like it should be.
-function buildSearchString(){
+function buildNotificationString(){
 	//Not really sexy... but who cares?! :D
 	//Final looks are cool!!!
 	var aReturn = "";
@@ -66,49 +66,52 @@ function buildSearchString(){
 }
 
 //SweetAlert2 function.
-//Only alert who actually interests me.
+//Only alert wich actually interests me.
 function notify(type,msg){
 	const Toast = Swal.mixin({
-	toast: true,
-	position: 'top-end',
-	showConfirmButton: false,
-	timer: 3000,
-	timerProgressBar: true,
-	onOpen: (toast) => {
-	toast.addEventListener('mouseenter', Swal.stopTimer)
-	toast.addEventListener('mouseleave', Swal.resumeTimer)
-	}
+		toast: true,
+		position: 'top-end',
+		showConfirmButton: false,
+		timer: 3000,
+		timerProgressBar: true,
+		onOpen: (toast) => {
+			toast.addEventListener('mouseenter', Swal.stopTimer)
+			toast.addEventListener('mouseleave', Swal.resumeTimer)
+		}
 	})
 
 	Toast.fire({
-	icon: type,
-	title: msg
+		icon: type,
+		title: msg
 	})
 }
 
+//Allows to load all the topics on arrival on the page.
 function loadAndShowMainPage(){
 	let data = {
 		action : "firstLoad"
 	};
 	postData("/menu", data, onSuccess, onError);
-	notify("info",buildSearchString());
+	notify("info",buildNotificationString());
 }
 
+//On succes of the postdate, this function shall be launched
 function onSuccess(response){
-	//console.log(response);
-	notify("info",buildSearchString());
+	notify("info",buildNotificationString());
 	topics = response.data;
 
+	//Creating the HTML table.
 	createDynamicHtmlList("topics", topics);
 }
 
+//On error of the postdate, this function shall be launched
 function onError(response){
 	console.log(response);
 	notify("info","Une erreur est survenue.");
-
 }
 
 //Gonna filter every element each time something is tiped in the input bar.
+//Ergonomics! No need to click on any button.
 function filterTopics(topic) {
 	if (filtersServices.length == 0 && filtersYears.length == 0){
 		//No filters selected. Only filter on the input.
@@ -126,11 +129,13 @@ function filterTopics(topic) {
 	return false;
 }
 
+//sets the filteredTopics as an array of.. filtered topics (YOLOOOO)
 function getFilteredTopics() {
   filteredTopics = topics.filter(filterTopics);
   createDynamicHtmlList("topics", filteredTopics);
 }
 
+//Creates the list of topics shown in the main menu.
 function createDynamicHtmlList(targetHtmlElementID, arrayToPrint){
 	let divCont = document.getElementById(targetHtmlElementID);
 	divCont.innerHTML = "";
@@ -209,9 +214,10 @@ function createDynamicHtmlList(targetHtmlElementID, arrayToPrint){
 	}
 }
 
+//When document is ready, prepare to react on different events.
 $(document).ready(function() {
 	loadAndShowMainPage();
-
+	
 	$('#checkboxMaths').click(function () {
 		if ($('#checkboxMaths').is(":checked")){
 			filtersServices.push("Maths");
@@ -219,7 +225,7 @@ $(document).ready(function() {
 			filtersServices.splice(filtersServices.indexOf("Maths"), 1);
 		}
 		getFilteredTopics();
-		notify("info",buildSearchString());
+		notify("info",buildNotificationString());
 	})
 
 	$('#checkboxPhysique').click(function () {
@@ -229,7 +235,7 @@ $(document).ready(function() {
 			filtersServices.splice(filtersServices.indexOf("Physique"), 1);
 		}
 		getFilteredTopics();
-		notify("info",buildSearchString());
+		notify("info",buildNotificationString());
 	})
 
 	$('#checkboxChimie').click(function () {
@@ -239,7 +245,7 @@ $(document).ready(function() {
 			filtersServices.splice(filtersServices.indexOf("Chimie"), 1);
 		}
 		getFilteredTopics();
-		notify("info",buildSearchString());
+		notify("info",buildNotificationString());
 	})
 
 	$('#checkboxPremière').click(function () {
@@ -249,7 +255,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Premiere"), 1);
 	    }
 	    getFilteredTopics();
-	    notify("info",buildSearchString());
+	    notify("info",buildNotificationString());
 	})
 
 	$('#checkboxDeuxième').click(function () {
@@ -259,7 +265,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Deuxieme"), 1);
 	    }
 	    getFilteredTopics();
-	    notify("info",buildSearchString());
+	    notify("info",buildNotificationString());
 	})
 
 	$('#checkboxTroisième').click(function () {
@@ -269,7 +275,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Troisieme"), 1);
 	    }
 	    getFilteredTopics();
-	    notify("info",buildSearchString());
+	    notify("info",buildNotificationString());
 	})
 
 	$('#checkboxQuatrième').click(function(){
@@ -279,7 +285,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Quatrieme"), 1);
 	    }
 	    getFilteredTopics();
-	    notify("info",buildSearchString());
+	    notify("info",buildNotificationString());
 	})
 
 	$('#checkboxCinquième').click(function () {
@@ -289,7 +295,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Cinquieme"), 1);
 	    }
 	    getFilteredTopics();
-	    notify("info",buildSearchString());
+	    notify("info",buildNotificationString());
 	})
 
 	$('#checkboxSixième').click(function () {
@@ -299,7 +305,7 @@ $(document).ready(function() {
 	    	filtersYears.splice(filtersYears.indexOf("Sixieme"), 1);
 	    }
 	    getFilteredTopics();
-	    notify("info",buildSearchString());
+	    notify("info",buildNotificationString());
 	})
 
 	$("#keyWord").on("input", function() {

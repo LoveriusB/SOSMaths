@@ -12,12 +12,13 @@
 	<script src="/vendors/js/sweetalert2.all.min.js"></script>
 	<script src="/vendors/js/jquery.min.js"></script>
 	<script src="/vendors/js/bootstrap.min.js"></script>
-	<script type="/vendors/js/myOwnJS/UtilsAPI.js" type="module"></script>
+	<script src="/vendors/js/myOwnJS/UtilsAPI.js" type="module"></script>
+	<script src="/vendors/js/myOwnJS/main.js" type="module"></script>
 	<script src="/vendors/js/myOwnJS/mainPageBis.js" type="module"></script>
 
 </head>
-<body>
-	<div class="backgroundimg">
+<body id="mainBody">
+	<div class="backgroundimg" id="topDiv">
 		<div>
 			<nav class="navbar navbar-expand-md navbar-dark">
 				<a class="navbar-brand mainTitle" href="#">SOSMaths</a>
@@ -28,10 +29,10 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="#">Home</a>
+							<a class="nav-link" href="#" id="HomeLink">Home</a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link" href="#">About</a>
+							<a class="nav-link" href="#" id="AboutLink">About</a>
 						</li>
 
 						<li class="nav-item dropdown">
@@ -39,14 +40,14 @@
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="#">Maths</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">chemistry</a>
+								<a class="dropdown-item" href="#">Chimie</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Physics</a>
+								<a class="dropdown-item" href="#">Physique</a>
 							</div>
 						</li>
 
 						<li class="nav-item active">
-							<a class="nav-link" href="#">Profile</a>
+							<a class="nav-link" href="#" id="ProfileLink">Login</a>
 						</li>
 					</ul>
 				</div>
@@ -55,10 +56,18 @@
 		<div class="main-title">
 			<h1>Bienvenue sur SOSMaths!</h1>
 			<h6>De l'aide en maths, vous dites?</h6>
-			<div class="MainVideo">
+			<div class="MainVideo" id="MainVideo">
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/UbQgXeY_zi4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+
+			<!-- Hidden at first thanks to main.js -->
+			<div id="loginDiv">
+				<div class="">
+					<div class="form-box"></div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<!-- Next page to bu updated is the left menu followed by the main page. -->
 	
 	

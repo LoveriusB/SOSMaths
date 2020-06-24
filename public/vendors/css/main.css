@@ -559,3 +559,16 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     color: mediumseagreen;
     font-weight: bold;
 }
+
+.hidden{
+    display: none;
+}
+
+.hero{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('/images/background.jpg');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
