@@ -1,27 +1,19 @@
 //Is going to make ligin and register forms swipe.
 
-var loginDiv = document.getElementById("Login");
-var registerDiv = document.getElementById("register");
-var z = document.getElementById("btn");
-
-function registerClick(){
-	loginDiv.style.left = "-110%";
-	registerDiv.style.left = "10%";
-	z.style.left = "50%";
-}
-
-function loginClick(){
-	loginDiv.style.left = "10%";
-	registerDiv.style.left = "110%";
-	z.style.left = "0%";
-}
-
 $(document).ready(function() {
-	$("#inscrireForm").click(function(){
-		registerClick();
+	$("#registerForm").hide();
+
+	$("#goToRegister").click(function(){
+		$("#loginForm").fadeOut(400);
+		setTimeout(function(){
+			$("#registerForm").fadeIn(400);
+		}, 500)
 	})
 
-	$("#connecterForm").click(function(){
-		loginClick();
+	$("#goToLogin").click(function(){
+		$("#registerForm").fadeOut(400);
+		setTimeout(function(){
+			$("#loginForm").fadeIn(400);
+		}, 500)
 	})
 })

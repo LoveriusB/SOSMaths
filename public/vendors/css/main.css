@@ -591,7 +591,10 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 input.ggg{
     width: 100%;
     padding: 15px 0px 15px 15px;
-    border: 1px solid #fff;
+    border-left:0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #fff;
     outline: none;
     font-size: 14px;
     color: #b2c8d6;
