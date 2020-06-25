@@ -1,3 +1,5 @@
+"use strict";
+
 function postData(url = "", data = {}, onPost, onError) {
 
   $.ajax({

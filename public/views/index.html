@@ -55,8 +55,8 @@
 			</nav>
 		</div>
 		<div class="main-title">
-			<h1>Bienvenue sur SOSMaths!</h1>
-			<h6>De l'aide en maths, vous dites?</h6>
+			<h1 id="mainTitle">Bienvenue sur SOSMaths!</h1>
+			<h6 id="subTitle">De l'aide en maths, vous dites?</h6>
 			<div class="MainVideo" id="MainVideo">
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/UbQgXeY_zi4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
@@ -83,9 +83,53 @@
 						<form action="#" method="post">
 							<input type="text" class="ggg" name="Name" placeholder="NOM" required="">
 							<input type="email" class="ggg" name="Email" placeholder="E-MAIL" required="">
-							<input type="number" class="ggg" name="Phone" placeholder="MON ANNEE D'ETUDES" required="">
+							<!--<input type="number" class="ggg" name="Phone" placeholder="MON ANNEE D'ETUDES" required="">-->
 							<input type="password" class="ggg" name="Password" placeholder="MOT DE PASSE" required="">
+
+
+							<span class="p">JE SUIS EN :</span>
+							<div class="cont">
+								<div class="select-box">
+									<div class="options-cont "><!--active-->
+
+										<div class="option">
+											<input type="radio" class="radio" id="Premiere" name="Annees">
+											<label for="Premiere">Première</label>
+										</div>
+
+										<div class="option">
+											<input type="radio" class="radio" id="Deuxieme" name="Annees">
+											<label for="Deuxieme">Deuxième</label>
+										</div>
+
+										<div class="option">
+											<input type="radio" class="radio" id="Troisieme" name="Annees">
+											<label for="Troisieme">Troisième</label>
+										</div>
+
+										<div class="option">
+											<input type="radio" class="radio" id="Quatrieme" name="Annees">
+											<label for="Quatrieme">Quatrième</label>
+										</div>
+
+										<div class="option">
+											<input type="radio" class="radio" id="Cinquieme" name="Annees">
+											<label for="Cinquieme">Cinquième</label>
+										</div>
+
+										<div class="option">
+											<input type="radio" class="radio" id="Sixieme" name="Annees">
+											<label for="Sixieme">Sixième</label>
+										</div>
+									</div>
+									<div class="selected">
+										Sélectionne ton année
+									</div>
+								</div>
+							</div>
 							<h4><input type="checkbox" />J'ai lu et j'accepte les conditions générales d'utilisation</h4>
+
+
 							<div class="clearfix"></div>
 							<input type="submit" value="Enrigistrement" name="Enrigistrement" id="Enrigistrement">
 						</form>

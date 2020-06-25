@@ -583,7 +583,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 }
 .phpkida-main {
     width: 30%;
-    margin:5em auto;
+    margin: 2em auto;
     background:rgba(77, 130, 142, 0.27);
     padding: 42px 35px;
 }
@@ -691,6 +691,7 @@ h4 input[type="checkbox"] {
     font-weight:400;
     font-size:14px;
 }
+
 @media(max-width:940px)
 {
     .phpkida-main {width: 50%;}
@@ -701,3 +702,110 @@ h4 input[type="checkbox"] {
     .phpkida-main {width: 90%; padding: 5%;}
     input.ggg {width: 90%; padding: 15px 4%;}
 }
+
+span.p{
+    color: #b2c8d6;
+    text-align: left;
+    margin: 10px;
+}
+
+/*Custom selector*/
+
+.cont{
+    /*border-bottom: 1px solid #fff;*/
+    box-sizing: border-box;
+}
+
+.select-box{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.select-box .options-cont{
+    background: #2f3640;
+    color: #f5f6fa;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s; 
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    padding: 12px 24px;
+
+    order: 1;
+}
+
+.selected{
+    text-align: left;
+    padding: 12px 24px;
+    background: #2f3640;
+    border-radius: 8px;
+    margin-bottom: 8px; 
+    color: #f5f6fa;
+    position: relative;
+
+    order: 0;
+    cursor: pointer;
+}
+
+.selected::after {
+    content: "";
+    background: url("/images/arrow-down.svg");
+    background-size: contain;
+    background-repeat:  no-repeat;
+
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    right: 10px;
+    top: 5px;
+
+    transition: all 0.4s;
+}
+
+.option{
+    border-radius: 8px;
+    padding: 0 10px;
+}
+
+.select-box .options-cont.active{
+    max-height: 120px;
+    opacity: 1;
+    overflow-y: scroll;
+}
+
+.select-box .options-cont.active + .selected::after{
+    transform: rotateX(180deg);
+    top: -6px;
+}
+
+.select-box .options-cont::-webkit-scrollbar{
+    width: 8px;
+    background-color: #0d141f;
+    border-radius: 0 8px 8px 0;
+
+}
+
+.select-box .options-cont::-webkit-scrollbar-thumb{
+    background: #525861;
+    border-radius: 0 8px 8px 0;
+}
+
+.select-box .option .selected{
+    cursor: pointer;
+}
+
+.select-box .option:hover{
+    background: #414b57;
+}
+
+.select-box label{
+    cursor: pointer;
+}
+
+.select-box .option .radio {
+    display: none;
+}
+
