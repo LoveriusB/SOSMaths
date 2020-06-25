@@ -92,12 +92,11 @@ function loadAndShowMainPage(){
 		action : "firstLoad"
 	};
 	postData("/menu", data, onSuccess, onError);
-	notify("info",buildNotificationString());
 }
 
 //On succes of the postdate, this function shall be launched
 function onSuccess(response){
-	notify("info",buildNotificationString());
+	//notify("info",buildNotificationString());
 	topics = response.data;
 
 	//Creating the HTML table.

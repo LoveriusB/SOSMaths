@@ -15,9 +15,10 @@
 	<script src="/vendors/js/myOwnJS/UtilsAPI.js" type="module"></script>
 	<script src="/vendors/js/myOwnJS/main.js" type="module"></script>
 	<script src="/vendors/js/myOwnJS/mainPageBis.js" type="module"></script>
+	<script src="/vendors/js/myOwnJS/login.js" type="module"></script>
 
 </head>
-<body id="mainBody">
+<body>
 	<div class="backgroundimg" id="topDiv">
 		<div>
 			<nav class="navbar navbar-expand-md navbar-dark">
@@ -62,8 +63,44 @@
 
 			<!-- Hidden at first thanks to main.js -->
 			<div id="loginDiv">
-				<div class="">
-					<div class="form-box"></div>
+				<!--<div class="form-box">
+					<div class="button-box">
+						<div id="btn"></div>
+						<button type="button" class="togg-btn" id="connecterForm">Se connecter</button>
+						<button type="button" class="togg-btn" id="inscrireForm">S'inscrire</button>
+					</div>
+					<div class="social-icons"></div>
+					<form id="Login" class="input-group">
+						<input type="text" class="input-field" placeholder="Identifiant" required>
+						<input type="text" class="input-field" placeholder="Mot de passse" required>
+
+						<button type="submit" class="submit-login-btn">Connexion</button>
+					</form>
+
+					<form id="register" class="input-group">
+						<input type="text" class="input-field" placeholder="Identifiant" required>
+						<input type="text" class="input-field" placeholder="Mot de passse" required>
+						<input type="text" class="input-field" placeholder="Confirmer mot de passse" required>
+						<input type="text" class="input-field" placeholder="Email" required>
+
+						<button type="submit" class="submit-login-btn">S'inscrire</button>
+					</form>
+
+				</div>-->
+
+				<div>
+					<div class="phpkida-main">
+						<h2>Connectez vous</h2>
+						<form action="#" method="post">
+							<input type="email" class="ggg" name="Email" placeholder="E-MAIL" required="">
+							<input type="password" class="ggg" name="Password" placeholder="PASSWORD" required="">
+							<span><input type="checkbox" />Remember Me</span>
+							<span class="span-right"><a href="#">Forgot Password?</a></span>
+							<div class="clearfix"></div>
+							<input type="submit" value="Sign In" name="login">
+						</form>
+						<p>Don't Have an Account ?<a href="registration.html">Create an account</a></p>
+					</div>
 				</div>
 			</div>
 		</div>

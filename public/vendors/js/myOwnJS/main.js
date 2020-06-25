@@ -6,12 +6,7 @@ function showLoginPage(){
 	$('#loginDiv').show();
 	$('footer').hide();
 
-//Some style moddifications to have a nice background on login page
-	$('#topDiv').css("height", "100%");
-	$('#topDiv').css("width", "100%");
-	$('#topDiv').css("background-position", "center");
-	$('#topDiv').css("background-size", "cover");
-	$('#topDiv').css("position", "absolute");
+	$( "#topDiv" ).removeClass( "backgroundimg" ).addClass( "expandLogin" );
 }
 
 function showMainPage(){
@@ -19,12 +14,8 @@ function showMainPage(){
 	$('#MainVideo').show();
 	$('#loginDiv').hide();
 	$('footer').show();
-//Undo all changings
-	$('#topDiv').css("height", "");
-	$('#topDiv').css("width", "");
-	$('#topDiv').css("background-position", "");
-	$('#topDiv').css("background-size", "");
-	$('#topDiv').css("position", "");
+
+	$( "#topDiv" ).removeClass( "expandLogin" ).addClass( "backgroundimg" );
 }
 
 $(document).ready(function() {

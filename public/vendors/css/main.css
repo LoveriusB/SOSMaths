@@ -564,11 +564,137 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     display: none;
 }
 
-.hero{
+.expandLogin{
     height: 100%;
     width: 100%;
     background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('/images/background.jpg');
     background-position: center;
     background-size: cover;
     position: absolute;
+}
+
+.phpkida-main h2 {
+    color: #b2c8d6;
+    font-size: 29px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+    text-align: center;
+}
+.phpkida-main {
+    width: 30%;
+    margin:5em auto;
+    background:rgba(77, 130, 142, 0.27);
+    padding: 42px 35px;
+}
+
+input.ggg{
+    width: 100%;
+    padding: 15px 0px 15px 15px;
+    border: 1px solid #fff;
+    outline: none;
+    font-size: 14px;
+    color: #b2c8d6;
+    margin: 14px 0px;
+    background: none;
+}
+
+input.ggg::placeholder {
+    font-family: Gilroy-ExtraBold !important;
+    color: #b2c8d6;
+}
+input.ggg:focus::placeholder {/*For chrome*/
+    font-family: Gilroy-ExtraBold !important;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    -webkit-transform: translate(10px, 0);
+    transform: translate(10px, 0);
+    opacity: 0;
+    width: 100%;
+}
+
+.phpkida-main span {
+    font-size: 16px;
+    color: #fff;
+    float: left;
+    width: 50%;
+    margin-top: 8px;
+}
+.span-right {
+    text-align:right;
+}
+.phpkida-main a {
+    color: #fff;
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -o-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -ms-transition:0.5s all;
+}
+.phpkida-main a:hover{
+    color:#f0bcb4;
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -o-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -ms-transition:0.5s all;
+}
+.phpkida-main input[type="submit"] {
+    padding: 12px 38px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #f0bcb4;
+    color: white;
+    border: none;
+    outline: none;
+    display: table;
+    cursor: pointer;
+    margin: 45px auto 31px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+.phpkida-main input[type="submit"]:hover {
+    background:#8b5c7e;
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -o-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -ms-transition:0.5s all;
+}
+.phpkida-main p a {
+    color: #f0bcb4;
+    padding: 10px;
+}
+.phpkida-main p a:hover {
+    color: #fff;
+}
+.phpkida-main p {
+    font-size: 17px;
+    color: #fff;
+    text-align: center;
+}
+/*--//login--*/
+h4 input[type="checkbox"] {
+    margin-right: 10px;
+}
+.phpkida-main h4{
+    margin-right: 10px;
+    color:#fff;
+    font-weight:400;
+    font-size:14px;
+}
+@media(max-width:940px)
+{
+    .phpkida-main {width: 50%;}
+}
+
+@media(max-width:550px)
+{
+    .phpkida-main {width: 90%; padding: 5%;}
+    input.ggg {width: 90%; padding: 15px 4%;}
 }
