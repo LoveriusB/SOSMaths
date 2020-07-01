@@ -53,31 +53,9 @@ public class MenuServlet extends HttpServlet{
 		}
 		return -1;
 	}
-	
-	/**
-	 * Decode the body of our req variable sended by JS
-	 * @param req the request gottent by JS
-	 * @return the body decoded as a map.
-	 */
-	public Map<String, Object> decoderBodyJson(HttpServletRequest req) {
-		StringBuffer jb = new StringBuffer();
-		String line = null;
-
-		try {
-			BufferedReader reader = req.getReader();
-			while ((line = reader.readLine()) != null) {
-				jb.append(line);
-			}
-		} catch (Exception exception) {
-			exception.printStackTrace();
-		}
-
-		Map<String, Object> body = gensonUser.deserialize(jb.toString(), Map.class);
-		return body;
-	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		Map<String, Object> body = decoderBodyJson(req);
+		Map<String, Object> body = ServletUtils.decoderBodyJson(req);
 		String toSend = "{\"success\":true}";
 		
 		

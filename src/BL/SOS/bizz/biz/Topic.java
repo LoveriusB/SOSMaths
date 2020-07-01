@@ -1,6 +1,7 @@
 package BL.SOS.bizz.biz;
 
 public class Topic{
+	
 	private String id;
 	private String videoLink;
 	private String title;

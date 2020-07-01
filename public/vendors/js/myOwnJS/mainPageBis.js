@@ -1,9 +1,35 @@
-import { postData, getData } from "./UtilsAPI.js";
+//import { postData, getData } from "./UtilsAPI.js";
 
 var filtersServices = [];
 var filtersYears = [];
 var topics = [];
 var filteredTopics = [];
+
+function postData(url, data, onPost, onError) {
+
+  $.ajax({
+    contentType: "json",
+    type: "post",
+    url: url,
+    data: JSON.stringify(data),
+    dataType: "json",
+    success: onPost,
+    error: onError
+  });
+}
+
+function getData(url, data, onPost, onError) {
+
+  $.ajax({
+    contentType: "json",
+    type: "get",
+    url: url,
+    data: JSON.stringify(data),
+    dataType: "json",
+    success: onPost,
+    error: onError
+  });
+}
 
 //Just to be sure the info string after the click on the search button
 //Is nice and clean just like it should be.
@@ -74,7 +100,7 @@ function notify(type,msg){
 		showConfirmButton: false,
 		timer: 3000,
 		timerProgressBar: true,
-		onOpen: (toast) => {
+		onOpen: function (toast) {
 			toast.addEventListener('mouseenter', Swal.stopTimer)
 			toast.addEventListener('mouseleave', Swal.resumeTimer)
 		}

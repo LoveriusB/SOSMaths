@@ -1,4 +1,6 @@
-"use strict";
+$(document).ready(function(){
+  alert("done");
+})
 
 function postData(url = "", data = {}, onPost, onError) {
 

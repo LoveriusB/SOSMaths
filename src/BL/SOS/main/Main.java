@@ -6,6 +6,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
 
+import BL.SOS.ihm.ConnectionServlet;
 import BL.SOS.ihm.MenuServlet;
 import BL.SOS.ihm.RootServlet;
 
@@ -26,6 +27,10 @@ public class Main {
 		HttpServlet menuServlet = new MenuServlet();
 	    injectionService.injectDependencies(menuServlet);
 	    context.addServlet(new ServletHolder(menuServlet), "/menu");
+	    
+	    HttpServlet connectionServlet = new ConnectionServlet();
+	    injectionService.injectDependencies(connectionServlet);
+	    context.addServlet(new ServletHolder(connectionServlet), "/connection");
 		
 		//Add servlets here.
 		

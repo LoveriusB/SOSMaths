@@ -5,16 +5,24 @@ $(document).ready(function() {
 	var optionsList = document.querySelectorAll(".option");
 	$("#registerForm").hide();
 
-	selected.addEventListener("click", () => {
+	selected.addEventListener("click", function() {
 		optionsContainter.classList.toggle("active");
 	})
 
-	optionsList.forEach(o => {
-		o.addEventListener("click", () => {
+	/*optionsList.forEach(function(o){
+		o.addEventListener("click", function() {
 			selected.innerHTML = o.querySelector("label").innerHTML;
 			optionsContainter.classList.remove("active");
 		})
-	})
+	})*/
+
+
+	for (var i = 0; i < optionsList.length; i++){
+		optionsList[i].addEventListener("click", function() {
+			selected.innerHTML = this.querySelector("label").innerHTML;
+			optionsContainter.classList.remove("active");
+		})
+	}
 
 	$("#goToRegister").click(function(){
 		$("#loginForm").fadeOut(400);
